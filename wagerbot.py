@@ -26,7 +26,7 @@ small_array = []
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Hi! Welcome to Wager Bot where we take your money!')
+    update.message.reply_text('Hi! Welcome to Wage Bot!')
     keyboard = [[(KeyboardButton('/big_small'))],[(KeyboardButton('/blackjack'))],[(KeyboardButton('/devil'))]]
 
     keyboardmarkup = ReplyKeyboardMarkup(keyboard, one_time_keyboard=True)
@@ -119,7 +119,7 @@ def unknown(bot, update):
 
 def main():
     # Create the Updater and pass it your bot's token.
-    updater = Updater(token='538834763:AAG0s0JNZmWeHzYZX1fgpwo3Ot50gquUuXY')
+    updater = Updater(token='493877665:AAGn4U1SOBu04mcWO-6JRS6PCWZL-RhGhoo')
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
