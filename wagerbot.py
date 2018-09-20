@@ -11,7 +11,7 @@ from telegram import InlineQueryResultArticle, ParseMode, InputTextMessageConten
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler, MessageHandler, Filters, JobQueue
 import logging
 
-# Enable logging
+# Enable logging, changes
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
@@ -53,9 +53,9 @@ def stop_big_small(bot, job):
             bot.send_message(chat_id=i,
                          text="Big! You lose fucker!")
     big_array[:] = []
-    small_array[:] = []    
+    small_array[:] = []
 
-                     
+
 def big_small(bot, update, job_queue):
     global big_small_started
     if not big_small_started:
@@ -67,24 +67,24 @@ def big_small(bot, update, job_queue):
                          reply_markup=keyboardmarkup)
         big_small_started = True
         job_queue.run_once(stop_big_small, 5)
-        
 
-    
+
+
 
 def big(bot, update):
     if big_small_started:
         big_array.append(update.message.from_user.id)
         update.message.reply_text('Big Registered')
-        update.message.reply_text(big_array) 
+        update.message.reply_text(big_array)
     else:
         update.message.reply_text('Start a new game')
-        
+
 
 def small(bot, update):
     if big_small_started:
         small_array.append(update.message.from_user.id)
         update.message.reply_text('Small Registered')
-        update.message.reply_text(small_array) 
+        update.message.reply_text(small_array)
     else:
         update.message.reply_text('Start a new game')
 
@@ -126,7 +126,7 @@ def main():
     uh = MessageHandler(Filters.command, unknown)
     inline_handler = InlineQueryHandler(inlinequery)
 
-    
+
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
